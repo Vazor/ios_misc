@@ -1,26 +1,21 @@
 # Markdown语法
 
-## 概述
+<!-- 注释：使用Mou的教程 -->
 
-**Mou**, the missing Markdown editor for *web developers*.
-
-### 语法
-
-#### 粗体（Strong）& 斜体（Emphasize） 
+## 粗体（Strong）& 斜体（Emphasize） 
 
 **粗体** or __粗体__ ( Cmd + B )
 
 *斜体* or _斜体_ ( Cmd + I )
 
-#### 引用（Blockquotes）
+## 引用（Blockquotes）
 
 > 右箭头表示引用。使用非转义的引用： &gt; 
+>> 引用中的引用
 
-#### 超链接（Links & Email）
+## 超链接（Links & Email）
 
-<admin@jeffw.us>
-
-<http://jeffw.us>
+自动连接：<admin@jeffw.us> <http://jeffw.us>
 
 [不带标题的连接](http://jeffw.us)
 
@@ -30,51 +25,67 @@
 
 [id]: http://jeffw.us "Jeff的主页"
 
-#### 图片（Images）
+## 图片（Images）
 
-An inline image ![Smaller icon](http://25.io/smaller/favicon.ico "Title here"), title is optional.
+行内图片 ![普通图片](https://www.baidu.com/favicon.ico "百度的favicon"), title为可选.
 
-A ![Resize icon][2] reference style image.
+![利用引用的图片][2]
 
-[2]: http://resizesafari.com/favicon.ico "Title"
+[2]: https://www.baidu.com/favicon.ico "百度的favicon"
 
-#### Inline code and Block code
+## 行内代码（Inline code）& 代码块（Block code）& 代码栏（Fenced Code Blocks）
 
-Inline code are surround by `backtick` key. To create a block code:
+行内代码使用`英文的重音符（backtick)`.
 
-	Indent each line by at least 1 tab, or 4 spaces.
-    var Mou = exactlyTheAppIwant; 
+	// 每行行首使用1个Tab或4个空格
+    printf("hello Jeff!"); 
 
-####  Ordered Lists
+```
+// 代码栏：起始和结尾使用等数量的3个或以上的英文重音符（`）
+printf("hello Jeff!"); 
+```
 
-Ordered lists are created using "1." + Space:
+##  有序列表（Ordered Lists）
+
+行首：数字 + . + 空格
 
 1. Ordered list item
 2. Ordered list item
 3. Ordered list item
 
-#### Unordered Lists
+## 无序列表（Unordered Lists）
 
-Unordered list are created using "*" + Space:
+行首：* + 空格 OR - + 空格 OR + + 空格（Ctrl + 回车）
 
 * Unordered list item
 * Unordered list item
-* Unordered list item 
-
-Or using "-" + Space:
-
 - Unordered list item
 - Unordered list item
-- Unordered list item
++ Unordered list item
 
-#### Hard Linebreak
+## 嵌套列表
 
-End a line with two or more spaces will create a hard linebreak, called `<br />` in HTML. ( Control + Return )  
-Above line ended with 2 spaces.
+- 嵌套列表
+	+ 2个或4个空格，或1个tab
+    	* +-*都一样，而且可以循环使用
+      		1. 可以使用有序列表
+      		
+- 嵌套列表
+---
 
-#### Horizontal Rules
+1. Ordered list item
+	1. Ordered list item
+3. Ordered list item
 
-Three or more asterisks or dashes:
+
+## 硬换行（Hard Linebreak）
+
+行尾使用2个或4个空格会产生一个硬换行，HTML里称为 `<br />` 。( Ctrl + 回车 )  
+上一行行尾使用了2个空格。
+
+## 分割线（Horizontal Rules）
+
+行首：三个以上的*号或-号:
 
 ***
 
@@ -82,7 +93,7 @@ Three or more asterisks or dashes:
 
 - - - -
 
-#### Headers
+## 标题（Headers）
 
 Setext-style:
 
@@ -102,132 +113,59 @@ atx-style:
 ###### This is H6
 
 
-### Extra Syntax
-
-#### Footnotes
+## 脚注（Footnotes）
 
 Footnotes work mostly like reference-style links. A footnote is made of two things: a marker in the text that will become a superscript number; a footnote definition that will be placed in a list of footnotes at the end of the document. A footnote looks like this:
 
-That's some text with a footnote.[^1]
+点击脚注查看.[^1]
 
-[^1]: And that's the footnote.
+[^1]: 数字是可选的。而且文档最后只会显示实际有用的注释。
 
+## 删除线（Strikethrough）
 
-#### Strikethrough
+~~左右各使用两个波浪线符号~~
 
-Wrap with 2 tilde characters:
+## 表格（Tables）
 
-~~Strikethrough~~
-
-
-#### Fenced Code Blocks
-
-Start with a line containing 3 or more backticks, and ends with the first line with the same number of backticks:
-
-```
-Fenced code blocks are like Stardard Markdown’s regular code
-blocks, except that they’re not indented and instead rely on
-a start and end fence lines to delimit the code block.
-```
-
-#### Tables
-
-A simple table looks like this:
+一个简单地表格如下：
 
 First Header | Second Header | Third Header
 ------------ | ------------- | ------------
 Content Cell | Content Cell  | Content Cell
 Content Cell | Content Cell  | Content Cell
 
-If you wish, you can add a leading and tailing pipe to each line of the table:
+也可以左右添加竖线：
 
 | First Header | Second Header | Third Header |
 | ------------ | ------------- | ------------ |
 | Content Cell | Content Cell  | Content Cell |
 | Content Cell | Content Cell  | Content Cell |
 
-Specify alignment for each column by adding colons to separator lines:
+指定对其方式：
 
 First Header | Second Header | Third Header
 :----------- | :-----------: | -----------:
-Left         | Center        | Right
-Left         | Center        | Right
+靠左          | 居中          | 靠右
+靠左          | 居中          | 靠右
 
+## 转义字符
 
-### Shortcuts
+Markdown中的转义字符为\：
 
-#### View
+\\ 反斜杠  
+\` 反引号  
+\* 星号  
+\_ 下划线  
+\{\} 大括号  
+\[\] 中括号  
+\(\) 小括号  
+\# 井号  
+\+ 加号  
+\- 减号  
+\. 英文句号  
+\! 感叹号  
+\> 大于号
 
-* Toggle live preview: Shift + Cmd + I
-* Toggle Words Counter: Shift + Cmd + W
-* Toggle Transparent: Shift + Cmd + T
-* Toggle Floating: Shift + Cmd + F
-* Left/Right = 1/1: Cmd + 0
-* Left/Right = 3/1: Cmd + +
-* Left/Right = 1/3: Cmd + -
-* Toggle Writing orientation: Cmd + L
-* Toggle fullscreen: Control + Cmd + F
+## 其它
 
-#### Actions
-
-* Copy HTML: Option + Cmd + C
-* Strong: Select text, Cmd + B
-* Emphasize: Select text, Cmd + I
-* Inline Code: Select text, Cmd + K
-* Strikethrough: Select text, Cmd + U
-* Link: Select text, Control + Shift + L
-* Image: Select text, Control + Shift + I
-* Select Word: Control + Option + W
-* Select Line: Shift + Cmd + L
-* Select All: Cmd + A
-* Deselect All: Cmd + D
-* Convert to Uppercase: Select text, Control + U
-* Convert to Lowercase: Select text, Control + Shift + U
-* Convert to Titlecase: Select text, Control + Option + U
-* Convert to List: Select lines, Control + L
-* Convert to Blockquote: Select lines, Control + Q
-* Convert to H1: Cmd + 1
-* Convert to H2: Cmd + 2
-* Convert to H3: Cmd + 3
-* Convert to H4: Cmd + 4
-* Convert to H5: Cmd + 5
-* Convert to H6: Cmd + 6
-* Convert Spaces to Tabs: Control + [
-* Convert Tabs to Spaces: Control + ]
-* Insert Current Date: Control + Shift + 1
-* Insert Current Time: Control + Shift + 2
-* Insert entity <: Control + Shift + ,
-* Insert entity >: Control + Shift + .
-* Insert entity &: Control + Shift + 7
-* Insert entity Space: Control + Shift + Space
-* Insert Scriptogr.am Header: Control + Shift + G
-* Shift Line Left: Select lines, Cmd + [
-* Shift Line Right: Select lines, Cmd + ]
-* New Line: Cmd + Return
-* Comment: Cmd + /
-* Hard Linebreak: Control + Return
-
-#### Edit
-
-* Auto complete current word: Esc
-* Find: Cmd + F
-* Close find bar: Esc
-
-#### Post
-
-* Post on Scriptogr.am: Control + Shift + S
-* Post on Tumblr: Control + Shift + T
-
-#### Export
-
-* Export HTML: Option + Cmd + E
-* Export PDF:  Option + Cmd + P
-
-
-### And more?
-
-Don't forget to check Preferences, lots of useful options are there.
-
-Follow [@Mou](https://twitter.com/mou) on Twitter for the latest news.
-
-For feedback, use the menu `Help` - `Send Feedback`
+文本中可直接用html标签，但是要前后加上空行。
